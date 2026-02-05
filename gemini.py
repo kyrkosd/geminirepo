@@ -71,7 +71,7 @@ class SurveyApp:
         print(DIVIDER)
         print("   CYBERSECURITY TOOLING & QA INSIGHTS SURVEY   ")
         print(DIVIDER)
-        
+
         entry = {
             "timestamp": datetime.datetime.now().isoformat(),
             "responses": {}
@@ -87,7 +87,7 @@ class SurveyApp:
                 "In what context do you use them?", 
                 ["Work", "Personal", "Both"]
             )
-            
+
             q3_text = "What is the primary problem they solve for you?"
             q3_opts = ["Vulnerabilities", "Code Quality", "Both", "None"]
             resp["primary_benefit"] = self.get_input(q3_text, q3_opts)
@@ -129,7 +129,7 @@ class SurveyApp:
         total = len(self.results)
         ratings = [r["responses"]["rating"] for r in self.results]
         avg_rating = sum(ratings) / total
-        
+
         yes_count = sum(1 for r in self.results if r["responses"]["uses_sast"] == "Yes")
         no_count = total - yes_count
 
@@ -141,19 +141,19 @@ class SurveyApp:
         print(f"Average Industry Rating: {avg_rating:.1f} / 10")
         print(f"Adoption Rate: {(yes_count/total)*100:.1f}%")
         print(SUB_DIVIDER)
-        
+
         # Simple breakdown of barriers for non-users
         barriers = {}
         for r in self.results:
             b = r["responses"].get("barrier")
             if b:
                 barriers[b] = barriers.get(b, 0) + 1
-        
+
         if barriers:
             print("Top Barriers to Adoption:")
             for b, count in sorted(barriers.items(), key=lambda x: x[1], reverse=True):
                 print(f" - {b}: {count} user(s)")
-        
+
         input("\nPress Enter to return to menu...")
 
     def main_menu(self):
@@ -168,9 +168,9 @@ class SurveyApp:
             print("3. Export Raw Data (JSON)")
             print("4. Exit")
             print(SUB_DIVIDER)
-            
+
             choice = input("Select an option: ")
-            
+
             if choice == "1":
                 self.run_survey()
             elif choice == "2":
