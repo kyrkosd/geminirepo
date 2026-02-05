@@ -1,3 +1,6 @@
+"""
+Questionare for WMC26
+"""
 import json
 import os
 import datetime
@@ -7,7 +10,9 @@ from typing import List, Dict, Any
 DATA_FILE = "survey_results.json"
 DIVIDER = "=" * 50
 SUB_DIVIDER = "-" * 50
-
+"""
+Servey app
+"""
 class SurveyApp:
     def __init__(self):
         self.results = []
